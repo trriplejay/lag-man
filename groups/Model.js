@@ -3,8 +3,6 @@
 var mongoose = require('mongoose');
 module.exports = mongoose.model('Groups', require(groupsSchema));
 
-var mongoose = require('mongoose');
-
 var groupsSchema =
   new mongoose.Schema({
       name: {type: String, required: true},
@@ -14,6 +12,8 @@ var groupsSchema =
       updatedBy: {type: String, required: true}
     },
     {collection: 'groups'});
+});
+
+groupsSchema.index({name: 1, createdBy: 1}, {unique: true});
 
 module.exports = groupsSchema;
-});
