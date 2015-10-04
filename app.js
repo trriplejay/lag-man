@@ -8,6 +8,9 @@ global._ = require('underscore');
 
 var app = express();
 
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/lagman');
+
 app.use(require('body-parser').json());
 app.use(require('body-parser').urlencoded({extended: true}));
 
@@ -32,6 +35,8 @@ var server = app.listen(3000, function () {
   app.get('/groups/:id', function (req, res) {
     res.send('group by Id');
   });
+  app.post('/groups', require('./groups/post.js'));
+
 
   // membership routes
   app.get('/groups/:id/memberships', function (req, res) {

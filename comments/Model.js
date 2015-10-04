@@ -1,7 +1,6 @@
 'use strict';
 
 var mongoose = require('mongoose');
-module.exports = mongoose.model('Comments', require(commentsSchema));
 
 var commentsSchema =
   new mongoose.Schema({
@@ -11,9 +10,8 @@ var commentsSchema =
       createdOn: {type: Date, default: Date.now()},
       text: {type: String, required: true}
     },
-    {collection: 'groups'});
-});
+    {collection: 'comments'});
 
 commentsSchema.index({name: 1, createdBy: 1}, {unique: true});
 
-module.exports = commentsSchema;
+module.exports = mongoose.model('Comment', require(commentsSchema));

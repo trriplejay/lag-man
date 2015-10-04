@@ -1,7 +1,6 @@
 'use strict';
 
 var mongoose = require('mongoose');
-module.exports = mongoose.model('Games', require(gamesSchema));
 
 var gameModes = [
   'STD',
@@ -30,6 +29,5 @@ var gamesSchema =
       updatedBy: {type: String, required: true}
     },
     {collection: 'groups'});
-});
 
-module.exports = groupsSchema;
+module.exports = mongoose.model('Games', require(gamesSchema));

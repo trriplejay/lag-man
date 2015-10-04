@@ -1,7 +1,7 @@
 'use strict';
 
 var mongoose = require('mongoose');
-module.exports = mongoose.model('Groups', require(usersSchema));
+
 
 var usersSchema =
   new mongoose.Schema({
@@ -22,9 +22,8 @@ var usersSchema =
       updatedBy: {type: String, required: true}
     },
     {collection: 'users'});
-});
 
 groupsSchema.index({userName: 1}, {unique: true});
 groupsSchema.index({email: 1}, {unique: true});
 
-module.exports = groupsSchema;
+module.exports = mongoose.model('User', require(usersSchema));

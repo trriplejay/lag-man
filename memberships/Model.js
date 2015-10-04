@@ -1,7 +1,7 @@
 'use strict';
 
 var mongoose = require('mongoose');
-module.exports = mongoose.model('Memberships', require(membershipsSchema));
+
 
 var membershipsSchema =
   new mongoose.Schema({
@@ -24,4 +24,4 @@ var membershipsSchema =
 
 membershipsSchema.index({userId: 1, groupId: 1}, {unique: true});
 
-module.exports = membershipsSchema;
+module.exports = mongoose.model('Membership', require(membershipsSchema));
